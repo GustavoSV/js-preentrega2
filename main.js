@@ -131,7 +131,7 @@ let codAlumno = "";
 let nombreA = ";"
 let i= -1;
 do {
-    opcionMenuPpal = menu(3, "BIENVENIDO A MI ESCUELA \n1. Opciones de la Cursada \n2. Opciones de Alumnos \n3. Terminar");
+    opcionMenuPpal = menu(3, "BIENVENIDO A MY LITTLE SCHOOL \n1. Opciones de la Cursada \n2. Opciones de Alumnos \n3. Terminar");
     switch (opcionMenuPpal) {
         case 1: // CURSADA
             do {
@@ -177,12 +177,34 @@ do {
                         codCursada = crearMenuCursadas(cursadasOrden);
                         if (codCursada !== "") {
                             let verCursada = notasxAlumno.filter((nota) => nota.codigoCursada === codCursada);
-                            alert("sí, lo sé, por ahora nos toca en la consola, sorry ;)");
+                            alert("sí, lo sé, pero por ahora nos toca en la consola, sorry ;)");
                             console.table(verCursada);
                         }
                         break;
-                    case 4:
-                        alert("opcionMenuCursada"+4);
+                    case 4: // Estadísticas
+                        let estadisticas = [];
+                        let cantAlumnos = 0;
+                        let notaMinima = 0;
+                        let notaMaxima = 0;
+                        cursadasOrden.forEach((curso) => {
+                            let cursoNotas = notasxAlumno.filter((notas) => notas.codigoCursada === curso.codigoCursada).map((item) => item.nota);
+                            cantAlumnos = cursoNotas.length;
+                            if (cantAlumnos > 0) {1
+                                notaMinima = Math.min(...cursoNotas);
+                                notaMaxima = Math.max(...cursoNotas);
+                            } else {
+                                notaMinima = 0;
+                                notaMaxima = 0;
+                            }
+                            estadisticas.push({
+                                "Cursada": curso.nombreCursada,
+                                "Cantidad Alumnos": cantAlumnos,
+                                "Nota mínima": notaMinima,
+                                "Nota máxima": notaMaxima
+                            });
+                        });
+                        alert("sí, lo sé, pero por ahora nos toca en la consola, sorry ;)");
+                        console.table(estadisticas);
                         break;
                     case 5:
                         break;
